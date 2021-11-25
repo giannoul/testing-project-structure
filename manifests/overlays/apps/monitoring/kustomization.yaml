@@ -1,0 +1,10 @@
+namespace: monitoring
+
+resources:
+  - prometheus
+  - alertmanager
+  - kube-state-metrics
+  - gatekeeper
+  - grafana
+  - node-exporter
+
