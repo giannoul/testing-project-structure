@@ -1,0 +1,30 @@
+name: deploy
+on:
+  push:
+    branches:
+    - "version-2*"  # run for branches
+    tags:
+    - "version-2*"  # run for tags
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: 
+        organization: ['org1-that-is-on-version2','org2-that-is-on-version2']
+    steps:
+    - name: Checkout version-2
+      uses: actions/checkout@v1
+
+    #
+    #
+    # Select organization
+    - name: Select organization
+      env:
+        organization: ${{ matrix.organization }}
+      run: echo $organization 
+
+    #
+    #
+    # List envvars
+    - name: List envvars
+      run: cat envvars
